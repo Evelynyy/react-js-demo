@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
 import "./index.less";
 
-class Header extends Component {
-  render() {
-    return <div className="M-header">Header</div>;
-  }
+function Header() {
+  return <div className="M-header">Header</div>;
 }
 
 export default Header;
