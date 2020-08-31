@@ -1,3 +1,1 @@
-const ZONE = "pages/header/";
-
-export const SET_DATA = ZONE + "SET_DATA";
+export const SET_DATA = "login/SET_DATA";

@@ -1,19 +1,17 @@
-import * as constants from "./constants";
-import { fromJS } from "immutable";
+import { handleActions } from "redux-actions";
+import { SET_DATA } from "./constants";
 
-const defaultState = fromJS({
+const defaultState = {
+  title: "Login",
   myData: null,
-});
-
-const setData = (state, action) => {
-  return state.set("myData", action.data);
 };
 
-export default (state = defaultState, action) => {
-  switch (action.type) {
-    case constants.SET_DATA:
-      return setData(state, action);
-    default:
-      return state;
-  }
-};
+export const reducer = handleActions(
+  {
+    [SET_DATA]: (state, action) => ({
+      ...defaultState,
+      myData: state.myData,
+    }),
+  },
+  defaultState
+);

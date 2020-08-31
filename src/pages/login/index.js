@@ -1,28 +1,23 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux";
 import Header from "../../components/header";
-import * as action from "./store/action";
-import * as reducer from "./store/reducer";
+import { setData } from "./store/action";
 
 import "./index.less";
 
 function Login() {
   let history = useHistory();
-  console.log("reducer", reducer);
-  const [state, dispatch] = useReducer(reducer, action);
-  console.log("state", state);
+  const dispatch = useDispatch();
+  const { myData } = useSelector((state) => state.login);
+  // console.log("myData", myData);
 
   function gotoHome() {
     history.push("/home");
   }
 
   function updateMyData() {
-    console.log(1);
-    dispatch({
-      type: "setData",
-      payload: "12345678",
-    });
+    dispatch(setData("123456"));
     // reducer.setData("123456");
   }
 
@@ -30,7 +25,7 @@ function Login() {
     <div className="P-login">
       <Header />
       <h1>Login page</h1>
-      <p>login : myData ={state.myData}</p>
+      <p>login : myData ={myData}</p>
 
       <button onClick={updateMyData}>更改 login 的 myData</button>
       <button onClick={gotoHome.bind(this)}>跳转 Home 页</button>

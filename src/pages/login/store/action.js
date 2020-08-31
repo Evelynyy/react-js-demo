@@ -1,3 +1,4 @@
-import * as constants from "./constants";
+import { SET_DATA } from "./constants";
+import { createAction } from "redux-actions";
 
-export const getData = (data) => ({ type: constants.SET_DATA, data });
+export const setData = createAction(SET_DATA);
